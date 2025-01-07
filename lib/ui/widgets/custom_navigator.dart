@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
-import 'package:flutter_blog/data/gvm/session_gvm.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CustomNavigation extends ConsumerWidget {
+class CustomNavigation extends StatelessWidget {
   final scaffoldKey;
-
   const CustomNavigation(this.scaffoldKey, {Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    SessionGVM gvm = ref.read(sessionProvider.notifier);
-
+  Widget build(BuildContext context) {
     return Container(
       width: getDrawerWidth(context),
       height: double.infinity,
@@ -39,7 +34,8 @@ class CustomNavigation extends ConsumerWidget {
               const Divider(),
               TextButton(
                 onPressed: () {
-                  gvm.logout();
+                  scaffoldKey.currentState!.openEndDrawer();
+                  Navigator.popAndPushNamed(context, "/login");
                 },
                 child: const Text(
                   "로그아웃",

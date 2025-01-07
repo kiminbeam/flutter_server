@@ -4,19 +4,20 @@ class CustomTextFormField extends StatelessWidget {
   final String hint;
   final bool obscureText;
   final TextEditingController controller;
-  final String initValue;
+  final String? initValue;
 
   const CustomTextFormField({
+    Key? key,
     required this.hint,
     this.obscureText = false,
     required this.controller,
     this.initValue = "",
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    if (initValue.isNotEmpty) {
-      controller.text = initValue;
+    if (initValue != null) {
+      controller.text = initValue!;
     }
     return TextFormField(
       controller: controller,

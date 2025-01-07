@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class PostDetailContent extends StatelessWidget {
-  String content;
-  
-  PostDetailContent(this.content);
+  final String content;
+
+  const PostDetailContent(this.content, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
